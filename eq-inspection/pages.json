@@ -1,0 +1,75 @@
+{
+    "pages": [ //pages数组中第一项表示应用启动页,
+        {
+            "path": "pages/main/main",
+            "style": {
+                "navigationBarTitleText": "首页",
+				"app-plus": {  //uni-app项目对应节点名称为"app-plus"
+					 "titleNView": false
+				  }
+            }
+        }, {
+            "path": "pages/login/login",
+            "style": {
+                "navigationBarTitleText": "登录",
+				"app-plus": {  //uni-app项目对应节点名称为"app-plus"
+					 "titleNView": false
+				  }
+            }
+        },  {
+            "path": "pages/pwd/pwd",
+            "style": {
+                "navigationBarTitleText": "忘记密码",
+				"navigationBarBackgroundColor":"#7aabc4",
+				"navigationBarTextStyle":"white"  //状态栏字体颜色
+
+            }
+        }, {
+            "path": "pages/user/user",
+            "style": {
+                "navigationBarTitleText": "我的"
+            }
+        }
+        ,{
+            "path" : "pages/changepwd/changepwd",
+            "style": {
+               "navigationBarTitleText": "忘记密码",
+           	   "navigationBarBackgroundColor":"#7aabc4",
+           	   "navigationBarTextStyle":"white"  //状态栏字体颜色          
+            }
+        }
+        ,{
+            "path" : "pages/inspection/inspection",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/pwd/losepwd/losepwd",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/schedule/schedule",
+            "style" : {}
+        }
+    ],
+    "tabBar": {
+        "color": "#7aabc4",
+        "selectedColor": "#D0E5E9",
+        "backgroundColor": "#42546E",
+        "list": [{
+            "pagePath": "pages/main/main",
+            "text": "概览",
+            "iconPath": "static/img/home.png",
+            "selectedIconPath": "static/img/homeHL.png"
+        }, {
+            "pagePath": "pages/user/user",
+            "text": "我的",
+            "iconPath": "static/img/user.png",
+            "selectedIconPath": "static/img/userHL.png"
+        }]
+    },
+    "globalStyle": {
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#7aabc4",
+        "backgroundColor": "#fbf9fe"
+    }
+}
