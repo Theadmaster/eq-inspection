@@ -79,7 +79,6 @@
 				"navigationBarTitleText": "路线21",
 				"navigationBarBackgroundColor":"#7aabc4",
 				"navigationBarTextStyle":"white"  ,//状态栏字体颜色   
-				// "navigationStyle":"custom"
 				"app-plus":{
 					"scrollIndicator":"none",//去除滚动条
 					"titleNView":{//导航栏
@@ -116,13 +115,55 @@
         ,{
             "path" : "pages/reinspection/reinspection",
             "style" : {
-				"navigationStyle":"custom"
-			}
+            	"navigationBarTitleText": "任务列表",
+            	"navigationBarBackgroundColor":"#7aabc4",
+            	"navigationBarTextStyle":"white"  ,//状态栏字体颜色   
+            	// "navigationStyle":"custom"
+            	"app-plus":{
+            		"scrollIndicator":"none",//去除滚动条
+            		"titleNView":{//导航栏
+            			"buttons":[//配置两边的按钮
+            				{
+            					"color":"#fff",
+            					"float":"right",
+            					"fontSize":"26px",
+            					"fontSrc":"/static/font/iconfont.ttf",
+            					"text":"\ue75e"
+            				}
+            			]
+            		}
+            	}
+            }
         }
         ,{
             "path" : "pages/reinspection/rePathItem/rePathItem",
             "style" : {
-				"navigationStyle":"custom"
+				// "navigationStyle":"custom"
+				// "navigationStyle":"custom"
+				"navigationBarTitleText": "路线21",
+				"navigationBarBackgroundColor":"#7aabc4",
+				"navigationBarTextStyle":"white"  ,//状态栏字体颜色   
+				"app-plus":{
+					"scrollIndicator":"none",//去除滚动条
+					"titleNView":{//导航栏
+						"buttons":[//配置两边的按钮
+							{
+								"color":"#fff",
+								"float":"right",
+								"fontSize":"26px",
+								"fontSrc":"/static/font/iconfont.ttf",
+								"text":"\ue75e"
+							},
+							{
+								"color":"#fff",
+								"float":"right",
+								"fontSize":"26px",
+								"fontSrc":"/static/font/iconfont.ttf",
+								"text":"\ue606"
+							}
+						]
+					}
+				}
 			}
         }
         ,{

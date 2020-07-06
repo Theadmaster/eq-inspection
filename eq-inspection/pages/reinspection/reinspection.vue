@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<!-- 顶部导航栏 -->
-		<uni-nav-bar 
+		<!-- <uni-nav-bar 
 		background-color="#7aabc4"
 		color="white"
 		left-icon="back"
@@ -12,7 +12,7 @@
 			<view slot="right">
 				<img class="img-right" src="../../static/img/select.png" />
 			</view>
-		</uni-nav-bar>
+		</uni-nav-bar> -->
 		
 		<!-- 占位工具人一号 -->
 		<view class="placehoder" />
@@ -47,7 +47,7 @@
 			<text>————暂无更多任务————</text>
 		</view>
 		
-		<!-- 弹出框 -->
+		<!-- 底部弹出框 -->
 		<uni-popup ref="popup" type="bottom">
 			<view class="dialog">
 				<view class="item" v-if="showFinish" @click="finishTaskClick">
@@ -60,6 +60,43 @@
 					取消
 				</view>
 			</view>
+		</uni-popup>
+		
+		<!-- 筛选 -->
+		<uni-popup ref="topPopup" type="top">
+			<view class="dialog1">
+				<text class="title">循环周期</text>
+				<view class="select-items">
+					<button>全部</button>
+					<button>每周一次</button>
+					<button>每日一次</button>
+				</view>
+				<text class="title">巡检状态</text>
+				<view class="select-items">
+					<button>全部</button>
+					<button>已完成</button>
+					<button>待巡检</button>
+					<button>进行中</button>
+					<view class="item1"/>
+					<view class="item1"/>
+				</view>
+				<text class="title">开始时间</text>
+				<view class="start-time">
+						<picker class="picker" mode="date" :value="startDate" :start="startDay" @change="startDateChange">
+							<view class="uni-input">{{startDate}}</view>
+						</picker>
+						<text class="line">——</text>
+						<picker class="picker" mode="date" :value="endDate" :start="startDay" @change="endDateChange">
+							<view class="uni-input">{{endDate}}</view>
+						</picker>
+					</view>
+					
+					<view class="bottom-button">
+						<button type="default">重置</button>
+						<button type="default" class="button2" @click="selectFinishClick" >完成</button>
+					</view>
+					
+				</view>
 		</uni-popup>
 	</view>
 	
@@ -92,7 +129,10 @@
 					statusValue: '已完成'
 				}],
 				showFinish: true,
-				currentItem: null
+				currentItem: null,
+				startDate: '开始时间',
+				endDate: '结束时间',
+				startDay:'2019-10-19'
 			};
 		},
 		methods:{
@@ -103,7 +143,7 @@
 			 * 筛选
 			 */
 			filtrate() {
-				console.log('123')
+				this.$refs.topPopup.open()
 			},
 			moreClick(item) {
 				this.currentItem = item
@@ -137,6 +177,30 @@
 			 */
 			finishTaskClick() {
 				this.$refs.popup.close()
+			},
+			/**
+			 * 选择开始时间
+			 */
+			startDateChange(res) {
+				this.startDate = res.detail.value
+			},
+			/**
+			 * 选择结束时间
+			 */
+			endDateChange(res) {
+				this.endDate = res.detail.value
+			},
+			/**
+			 * 筛选
+			 */
+			onNavigationBarButtonTap(e) {
+				this.filtrate()
+			},
+			/**
+			 * 筛选完成按钮
+			 */
+			selectFinishClick() {
+				this.$refs.topPopup.close()
 			}
 		}
 		
@@ -252,6 +316,79 @@
 	}
 	.item3 {
 		font-weight: 500 !important;
+	}
+}
+
+.dialog1 {
+	background-color: #fff;
+	// margin-top: 45px;
+	.title {
+		margin: 15px;
+		font-size: 16px;
+		font-weight: 600;
+	}
+	.select-items {
+		display: flex;
+		justify-content: space-around;
+		text-align: center;
+		flex-wrap: wrap;
+		button {
+			width: 100px;
+			height: 40px;
+			background-color: #F1F2F4;
+			margin: 10px;
+			line-height: 40px;
+			font-size: 14px;
+		}
+		view {
+			width: 100px;
+			height: 40px;
+			background-color: #F1F2F4;
+			margin: 10px;
+			line-height: 40px;
+			font-size: 14px;
+		}
+		.item1 {
+			background-color: #fff;
+		}
+	}
+	.start-time {
+		// background-color: #F1F2F4;
+		// width: 100px;
+		margin: 15px;
+		margin-bottom: 30px;
+		// display: flex;
+		div {
+			display: inline-block;
+		}
+		.line {
+			margin: 0 20px 0 20px;
+		}
+		.picker {
+			width: 100px;
+			border: 1px solid black;
+			display: inline-block !important;
+			border: 1px solid #BBB;
+			width: 100px;
+			font-size: 16px;
+			color: #888;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			div {
+				display: inline-block;
+			}
+		}
+	}
+	.bottom-button {
+		display: flex;
+		button {
+			flex: 1;
+			box-shadow: 0px 0px 5px #ccc ;
+		}
+		.button2 {
+			background-color: #7aabc4;
+		}
 	}
 }
 </style>

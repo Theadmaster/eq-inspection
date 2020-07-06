@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<!-- 顶部导航栏 -->
-		<uni-nav-bar 
+		<!-- <uni-nav-bar 
 		background-color="#7aabc4"
 		color="white"
 		left-icon="back"
@@ -13,7 +13,7 @@
 				<img class="img-right" src="../../../static/img/scan.png" />
 				<img class="img-right" src="../../../static/img/select.png" />
 			</view>
-		</uni-nav-bar>
+		</uni-nav-bar> -->
 		
 		<!-- 占位工具人一号 -->
 		<view class="placehoder" />
@@ -62,6 +62,34 @@
 				</view>
 			</view>
 		</uni-popup>
+		
+		<!-- 筛选弹出框 -->
+		<uni-popup ref="topPopup" type="top">
+			<view class="dialog1">
+				<text class="title">设备类别</text>
+				<view class="select-items">
+					<button>全部</button>
+					<button>压强</button>
+					<button>气温</button>
+				</view>
+				<text class="title">巡检状态</text>
+				<view class="select-items">
+					<button>全部</button>
+					<button>已完成</button>
+					<button>待巡检</button>
+					<button>进行中</button>
+					<view class="item1"/>
+					<view class="item1"/>
+				</view>
+				
+					
+				<view class="bottom-button">
+					<button type="default">重置</button>
+					<button type="default" class="button2" @click="selectFinishClick" >完成</button>
+				</view>
+			</view>	
+				
+		</uni-popup>
 	</view>
 </template>
 
@@ -104,6 +132,7 @@
 			 */
 			filtrate() {
 				console.log('123')
+				this.$refs.topPopup.open()
 			},
 			moreClick(item) {
 				this.currentItem = item
@@ -137,7 +166,25 @@
 			 */
 			finishTaskClick() {
 				this.$refs.popup.close()
-			}
+			},
+			/**
+			 * 筛选
+			 */
+			onNavigationBarButtonTap(e) {
+				// console.log(e)
+				if(e.index === 0) {
+					this.filtrate()
+				}else if (e.index === 1) {
+					// console.log('scan')
+					uni.scanCode({
+					    success: function (res) {
+					        console.log('条码类型：' + res.scanType);
+					        console.log('条码内容：' + res.result);
+					    }
+					});
+				}
+				// this.filtrate()
+			},
 		}
 	}
 </script>
@@ -251,4 +298,79 @@
 		font-weight: 500 !important;
 	}
 }
+
+.dialog1 {
+	background-color: #fff;
+	// margin-top: 45px;
+	.title {
+		margin: 15px;
+		font-size: 16px;
+		font-weight: 600;
+	}
+	.select-items {
+		display: flex;
+		justify-content: space-around;
+		text-align: center;
+		flex-wrap: wrap;
+		margin-bottom: 15px;
+		button {
+			width: 100px;
+			height: 40px;
+			background-color: #F1F2F4;
+			margin: 10px;
+			line-height: 40px;
+			font-size: 14px;
+		}
+		view {
+			width: 100px;
+			height: 40px;
+			background-color: #F1F2F4;
+			margin: 10px;
+			line-height: 40px;
+			font-size: 14px;
+		}
+		.item1 {
+			background-color: #fff;
+		}
+	}
+	.start-time {
+		// background-color: #F1F2F4;
+		// width: 100px;
+		margin: 15px;
+		margin-bottom: 30px;
+		// display: flex;
+		div {
+			display: inline-block;
+		}
+		.line {
+			margin: 0 20px 0 20px;
+		}
+		.picker {
+			width: 100px;
+			border: 1px solid black;
+			display: inline-block !important;
+			border: 1px solid #BBB;
+			width: 100px;
+			font-size: 16px;
+			color: #888;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			div {
+				display: inline-block;
+			}
+		}
+	}
+	
+}
+.bottom-button {
+		display: flex;
+		button {
+			flex: 1;
+			box-shadow: 0px 0px 5px #ccc ;
+		}
+		.button2 {
+			background-color: #7aabc4;
+		}
+	}
 </style>
