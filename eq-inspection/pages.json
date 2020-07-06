@@ -1,4 +1,7 @@
 {
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
     "pages": [ //pages数组中第一项表示应用启动页,
         {
             "path": "pages/main/main",
@@ -40,7 +43,26 @@
         }
         ,{
             "path" : "pages/inspection/inspection",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "任务列表",
+				"navigationBarBackgroundColor":"#7aabc4",
+				"navigationBarTextStyle":"white"  ,//状态栏字体颜色   
+				// "navigationStyle":"custom"
+				"app-plus":{
+					"scrollIndicator":"none",//去除滚动条
+					"titleNView":{//导航栏
+						"buttons":[//配置两边的按钮
+							{
+								"color":"#fff",
+								"float":"right",
+								"fontSize":"26px",
+								"fontSrc":"/static/font/iconfont.ttf",
+								"text":"\ue75e"
+							}
+						]
+					}
+				}
+			}
         }
         ,{
             "path" : "pages/pwd/losepwd/losepwd",
@@ -48,6 +70,81 @@
         }
         ,{
             "path" : "pages/schedule/schedule",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/inspection/pathItem/pathItem",
+            "style" : {
+				// "navigationStyle":"custom"
+				"navigationBarTitleText": "路线21",
+				"navigationBarBackgroundColor":"#7aabc4",
+				"navigationBarTextStyle":"white"  ,//状态栏字体颜色   
+				// "navigationStyle":"custom"
+				"app-plus":{
+					"scrollIndicator":"none",//去除滚动条
+					"titleNView":{//导航栏
+						"buttons":[//配置两边的按钮
+							{
+								"color":"#fff",
+								"float":"right",
+								"fontSize":"26px",
+								"fontSrc":"/static/font/iconfont.ttf",
+								"text":"\ue75e"
+							},
+							{
+								"color":"#fff",
+								"float":"right",
+								"fontSize":"26px",
+								"fontSrc":"/static/font/iconfont.ttf",
+								"text":"\ue606"
+							}
+						]
+					}
+				}
+			}
+        }
+        ,{
+            "path" : "pages/inspection/pathItem/pollingPoint/pollingPoint",
+            "style" : {
+				"navigationStyle":"custom"
+			}
+        }
+        ,{
+            "path" : "pages/inspection/pathItem/pollingPoint/pollingPoint",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/reinspection/reinspection",
+            "style" : {
+				"navigationStyle":"custom"
+			}
+        }
+        ,{
+            "path" : "pages/reinspection/rePathItem/rePathItem",
+            "style" : {
+				"navigationStyle":"custom"
+			}
+        }
+        ,{
+            "path" : "pages/reinspection/rePathItem/rePollingPoint/rePollingPoint",
+            "style" : {
+				"navigationStyle":"custom"
+			}
+        }
+        ,{
+            "path" : "pages/inspection/pathItem/pollingPoint/checkItem",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/inspection/pathItem/pollingPoint/checkPoint",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/reinspection/rePathItem/rePollingPoint/reCheckPoint",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/reinspection/rePathItem/rePollingPoint/reCheckItem",
             "style" : {}
         }
     ],

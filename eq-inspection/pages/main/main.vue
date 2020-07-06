@@ -35,7 +35,7 @@
 					},{
 					imgSrc:'../../static/img/fu.png',
 					itemName:'我的复检',
-					url:''
+					url:'../reinspection/reinspection'
 					},{
 					imgSrc:'../../static/img/enignee.png',
 					itemName:'设备列表',
